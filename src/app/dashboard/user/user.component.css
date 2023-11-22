@@ -1,0 +1,26 @@
+:host {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .fltr {
+    display: flex;
+    gap: 20px;
+  }
+  .mat-elevation-z8 {
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 600px) {
+    .fltr {
+      flex-wrap: wrap;
+      gap: 0px;
+    }
+  }
+.mainClass{
+  margin:20px;
+}
+.delete{
+  border: none;
+}

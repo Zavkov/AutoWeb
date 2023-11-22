@@ -1,0 +1,40 @@
+<mat-toolbar class="container-fluid">
+    <div class="row d-flex w-100">
+        <div class="col-11">
+            <img src="../../../assets/img/icon-inventory.png" routerLink="">
+            <h3 routerLink="">AUTOSALE</h3>
+            <div class="mainLink">
+                <button mat-button [matMenuTriggerFor]="firme">Регистрация</button>
+                <mat-menu #firme="matMenu" class="profi">
+                    <button mat-menu-item>Фирм</button>
+                    <button mat-menu-item>Магазинов</button>
+                    <button mat-menu-item>Бланки</button>
+                    <button mat-menu-item routerLink="/users">Пользователей</button>
+                    <button mat-menu-item routerLink="/roles">Ролей</button>
+                    <button mat-menu-item routerLink="/cities">Справочник городов</button>
+                </mat-menu>
+                <button mat-button [matMenuTriggerFor]="blanks">Бланки</button>
+                <mat-menu #blanks="matMenu" class="profi">
+                    <button mat-menu-item>Общий список</button>
+                    <button mat-menu-item>Проданные</button>
+                    <button mat-menu-item>Неиспользованные</button>
+                </mat-menu>
+                <button mat-button [matMenuTriggerFor]="reports">Отчеты</button>
+                <mat-menu #reports="matMenu" class="profi">
+                    <button mat-menu-item>Справка отчетов</button>
+                    <button mat-menu-item>Выгрузка</button>
+                </mat-menu>
+                <button mat-button>Поиск БСО</button>
+                <button mat-button>Операции</button>
+            </div>
+        </div>
+        <div class="col-1">
+            <button mat-button [matMenuTriggerFor]="menu">Профиль</button>
+            <mat-menu #menu="matMenu" class="profi">
+                <button mat-menu-item disabled>{{ userName }}</button>
+                <button mat-menu-item (click)="changePassword()">Изменить пароль</button>
+                <button mat-menu-item (click)="logout()">Выход</button>
+            </mat-menu>
+        </div>
+    </div>
+</mat-toolbar>
