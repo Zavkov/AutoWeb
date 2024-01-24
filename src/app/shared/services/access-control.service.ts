@@ -34,7 +34,7 @@ export class AccessControlService {
       map((userInfo) => {
         if (userInfo !== undefined) {
           const userFunctionals = userInfo.functionals;
-          if (userFunctionals.includes('AllFunctional')) {
+          if (userFunctionals.includes('All_Functional')) {
             return true;
           }
           return userFunctionals.includes(functional);

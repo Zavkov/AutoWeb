@@ -7,7 +7,7 @@ import { BaseService } from 'src/app/shared/services/base.service';
 @Component({
   selector: 'app-add-dialog',
   templateUrl: './add-dialog.component.html',
-  styleUrls: ['./add-dialog.component.css']
+  styleUrls: ['./add-dialog.component.css'] 
 })
 export class AddDialogComponent implements OnInit {
   roles: Role[];
@@ -20,20 +20,20 @@ export class AddDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
       private fb: FormBuilder
   ) {}
-
+ 
   ngOnInit(){
    this.formGroup = this.fb.group({
       firstName:[null, Validators.required],
       secondName:[null, Validators.required],
       surname:[null, Validators.required],
       phone:[null],
-      address:[null], 
+      address:[null],  
       position:[null], 
       username:[null, Validators.required],
       password:[null, Validators.required], 
       roleId:[null], 
       storeId:[null] 
-   });
+   }); 
    if(this.dialogData.id){
     this.formGroup.patchValue(this.dialogData);
   }

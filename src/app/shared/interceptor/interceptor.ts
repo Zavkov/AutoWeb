@@ -22,27 +22,27 @@ private errorMessages:IErrorMessages = {
   REFRESH_TOKEN_REVOKED: 'Токен обновления отозван.',
   REFRESH_TOKEN_ALREADY_REVOKED: 'Токен обновления уже отозван.',
   THIS_USERNAME_ALREADY_EXIST: 'Это имя пользователя уже существует.',
-  ENTITY_WITH_THIS_ID_NOT_FOUND_FOR_DELETE:
-    'Сущность с этим идентификатором не найдена для удаления.',
-  ENTITY_WITH_THIS_ID_NOT_FOUND:
-    'Сущность с этим идентификатором не найдена.',
+  ENTITY_WITH_THIS_ID_NOT_FOUND_FOR_DELETE:'Сущность с этим идентификатором не найдена для удаления.',
+  ENTITY_WITH_THIS_ID_NOT_FOUND:'Сущность с этим идентификатором не найдена.',
   NOT_FOUND_USER: 'Пользователь не найден.',
   LIST_IS_EMPTY: 'Список пуст.',
-  ENTITY_WITH_THIS_NAME_ALREADY_EXIST:
-    'Сущность с указанным именем уже существует.',
-  ENTITY_WITH_THIS_ID_NOT_FOUND_FOR_UPDATE:
-    'Сущность с указанным ID не найдена для обновления.',
+  ENTITY_WITH_THIS_NAME_ALREADY_EXIST:'Сущность с указанным именем уже существует.',
+  ENTITY_WITH_THIS_ID_NOT_FOUND_FOR_UPDATE:'Сущность с указанным ID не найдена для обновления.',
   COMPANY_WITH_THIS_ID_NOT_FOUND:'Компания с таким ID не найдена',
   STORE_WITH_THIS_ID_NOT_FOUND:'Магазин с таким ID не найдена',
   SERIA_WITH_THIS_ID_NOT_FOUND:'Серия с таким ID не найдена',
   USER_WITH_THIS_ID_NOT_FOUND:'Пользователь с таким ID не найден',
-  COMPANY_AND_SERIA_OR_USER_WITH_THIS_ID_NOT_FOUND:
-  'Компания или серия или пользователь с таким ID не найдена',
+  COMPANY_AND_SERIA_OR_USER_WITH_THIS_ID_NOT_FOUND:'Компания или серия или пользователь с таким ID не найдена',
   CITY_WITH_THIS_ID_NOT_FOUND: 'Город с указанным ID не найден.',
-  ENTITY_WITH_THIS_NAME_ALREADY_USING:
-    'Объект с этим названием уже используется',
-  ENTITY_WITH_THIS_NUMBER_ALREADY_EXIST:
-    'Объект с указанным номером уже существует',
+  ENTITY_WITH_THIS_NAME_ALREADY_USING:'Объект с этим названием уже используется',
+  ENTITY_WITH_THIS_NUMBER_ALREADY_EXIST:'Объект с указанным номером уже существует',
+  AUTO_WITH_THIS_ID_NOT_FOUND: 'Авто с указанным идентификационным номером не найдено.', 
+  VEHICLE_WITH_THIS_ID_NOT_FOUND: 'Транспорт с указанным идентификационным номером не найдено.', 
+  ISSUEDPASSPORT_WITH_THIS_ID_NOT_FOUND: 'Паспортные данные с указанным идентификационным номером не найдено.', 
+  REFERENCEACCOUNT_WITH_THIS_ID_NOT_FOUND: 'Сущность с указанным ID не найдена.', 
+  REFERENCEACCOUNTCARNUMBER_WITH_THIS_ID_NOT_FOUND:'Сущность с указанным ID не найдена.', 
+  BLANKA_WITH_THIS_NUMBER_ALREADY_EXIST: 'Бланка с таким номером уже существует.' 
+
 }
   constructor(
     private toastr: ToastrService,

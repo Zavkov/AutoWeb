@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  styleUrls: ['./add.component.css'],
 })
 export class AddComponent implements OnInit {
   formGroup:FormGroup;
@@ -15,7 +15,7 @@ export class AddComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
       private fb: FormBuilder
   ) {}
- 
+   
   ngOnInit() {
    this.formGroup = this.fb.group({
     name:[null, Validators.required]

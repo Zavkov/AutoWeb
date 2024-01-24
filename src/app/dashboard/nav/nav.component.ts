@@ -22,7 +22,7 @@ export class NavComponent {
   ) {
     this.accessControlService
       .getUserInfo()
-      .pipe(map((userInfo) => userInfo?.username || ''))
+      .pipe(map((userInfo) => userInfo?.firstName || ''))
       .subscribe((username) => {
         this.userName = username;
       });
@@ -33,6 +33,5 @@ export class NavComponent {
 
   logout() {
     this.auth.logout();
-    this.router.navigate(['/login']);
   }
 }

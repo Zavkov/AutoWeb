@@ -1,0 +1,75 @@
+<mat-card>
+    <div class="w-100 d-flex justify-content-center text-uppercase div">
+        <mat-card-header>
+            <mat-card-title >Редактирования</mat-card-title>
+        </mat-card-header>
+    </div><br>
+    <mat-card-content>
+        <form [formGroup]="formGroup">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Фирма</mat-label>
+                <mat-select formControlName="companyId">
+                    <mat-option *ngFor="let company of company" [value]="company.id">{{company.fullname}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Наименование магазина</mat-label>
+                <input matInput formControlName="fullname">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Адрес</mat-label>
+                <input matInput formControlName="address">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Регион</mat-label>
+                <mat-select formControlName="cityId">
+                    <mat-option *ngFor="let city of city" [value]="city.id">{{city.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>ИНН</mat-label>
+                <input matInput formControlName="inn">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Выписка</mat-label>
+                <input matInput formControlName="statement">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Свидетельство</mat-label>
+                <input matInput formControlName="certificate">
+            </mat-form-field>
+            <div class="d-flex justify-content-between">
+                <mat-form-field appearance="outline" class="w-50">
+                    <mat-label>Дата заключения ГАИ (хулоса)</mat-label>
+                    <input matInput [matDatepicker]="datePoliceConclusion"
+                      formControlName="datePoliceConclusion" />
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="datePoliceConclusion"></mat-datepicker-toggle>
+                    <mat-datepicker #datePoliceConclusion></mat-datepicker>
+                  </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-50 px-1">
+                    <mat-label>Дата оканчания заключений ГАИ</mat-label>
+                    <input matInput [matDatepicker]="endDatePoliceConclusion"
+                      formControlName="endDatePoliceConclusion" />
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="endDatePoliceConclusion"></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePoliceConclusion></mat-datepicker>
+                  </mat-form-field>
+            </div>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Директор</mat-label>
+                <input matInput formControlName="director">
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions class="center-container d-flex justify-content-center">
+        <button mat-raised-button color="primary" (click)="create()"
+            [disabled]="formGroup.invalid">Добавить</button>
+        <label class="px-2"></label>
+        <button mat-raised-button color="warn" (click)="cancel()">Отмена</button>
+    </mat-card-actions>
+</mat-card>
+

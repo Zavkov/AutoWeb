@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+  margin-top: -45px;
+
+}
+h3{
+  font-family: Times New Roman, sans-serif;
+  font-weight: bold;
+  font-size:25px;
+}
+p{
+  font-size:15px;
+  font-family: Times New Roman, sans-serif;
+}
+span{
+  font-weight: bold;
+}

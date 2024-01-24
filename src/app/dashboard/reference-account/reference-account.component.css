@@ -1,0 +1,66 @@
+h4 {
+    font-family: Time New Romanes;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+  .one {
+    background-color: #2a2042;
+    font-family: Time New Romanes;
+    margin: auto;
+    border-radius: 5px;
+    -webkit-box-shadow: -1px 12px 24px 1px rgba(110, 57, 110, 1);
+    -moz-box-shadow: -1px 12px 24px 1px rgba(110, 57, 110, 1);
+    box-shadow: -1px 12px 24px 1px rgba(110, 57, 110, 1);
+  }
+  
+  .two {
+    background-color: #fff;
+    font-family: Time New Romanes;
+    margin: auto;
+    margin-top: -20px;
+    color: #000;
+    -webkit-box-shadow: -1px 0px 19px 0px rgba(110, 57, 110, 1);
+    -moz-box-shadow: -1px 0px 19px 0px rgba(110, 57, 110, 1);
+    box-shadow: -1px 0px 19px 0px rgba(110, 57, 110, 1);
+  }
+  span {
+    font-family: Time New Romanes;
+    font-size: 18px;
+    color: #2f2f30;
+    margin-left: 10px;
+  }
+  legend{
+    font-family: Time New Romanes;
+    font-size: 17px;
+    margin-left: 10px;
+  }
+  mat-checkbox{
+    font-family: Time New Romanes;
+    font-size: 25px;
+    margin-left: 10px;
+  }
+  .ser {
+    width: 10%;
+    margin-right: 5px;
+  }
+  .side {
+    border: 1px solid #cacacf;
+    padding: 5px;
+    margin-bottom: 8px;
+  }
+  .front_side {
+    font-family: Time New Romanes;
+    padding: 10px;
+    border-right: 1px solid #cacacf;
+    border-left: 1px solid #cacacf;
+  }
+  .btn{
+      width:20%;
+      text-align:center;
+      margin-right:5px;
+      font-family: Time New Romanes;
+  }
+  

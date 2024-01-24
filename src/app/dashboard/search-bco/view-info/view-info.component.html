@@ -1,0 +1,102 @@
+<!-- <div *ngIf="info.length !== 0" class="p-5">
+    <h3 class="text-center">Информация по данной БСО:</h3>
+<table mat-table [dataSource]="info">
+    <div class="div" matColumnDef="seriaName">
+      <p mat-cell *matHeaderCellDef></p>
+      <p mat-cell *matCellDef="let element"><span>Серия: </span> {{element.seriaName}} </p>
+    </div>
+    <div matColumnDef="blankaNumber">
+      <p mat-cell *matHeaderCellDef> </p>
+      <p mat-cell *matCellDef="let element"><span>Номер Бланки: </span> {{element.blankaNumber}} </p>
+    </div>
+    <div matColumnDef="dataSale">
+        <p mat-cell *matHeaderCellDef> </p>
+        <p mat-cell *matCellDef="let element"><span>Дата выдачи(лиц.): </span> {{element.dataSale}} </p>
+      </div>
+      <div matColumnDef="storeName">
+        <p mat-cell *matHeaderCellDef> </p>
+        <p mat-cell *matCellDef="let element"><span>Нм.организации: </span> {{element.storeName}} </p>
+      </div>
+    <div matColumnDef="owner">
+      <p mat-cell *matHeaderCellDef></p>
+      <p mat-cell *matCellDef="let element"><span>Собственник: </span> {{element.owner}} </p>
+    </div>
+    <div matColumnDef="ownerAddress">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Адрес собственник: </span> {{element.ownerAddress}} </p>
+      </div>
+      <div matColumnDef="passportSeria">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Серия паспорта: </span> {{element.passportSeria}} </p>
+      </div>
+      <div matColumnDef="passportGetPlace">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Место выдачи паспорта: </span> {{element.passportGetPlace}} </p>
+      </div>
+      <div matColumnDef="passportDate">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Дата выдачи паспорта: </span> {{element.passportDate}} </p>
+      </div>
+      <div matColumnDef="sale">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Продан: </span> {{element.sale}} </p>
+      </div>
+      <div matColumnDef="model">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Модель: </span> {{element.model}} </p>
+      </div>
+      <div matColumnDef="seats">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Число мест: </span> {{element.seats}} </p>
+      </div>
+      <div matColumnDef="chassis">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Шасси (vin №): </span> {{element.chassis}} </p>
+      </div>
+      <div matColumnDef="body">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Кузов (vin №): </span> {{element.body}} </p>
+      </div>
+      <div matColumnDef="frame">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Рама (№): </span> {{element.frame}} </p>
+      </div>
+      <div matColumnDef="color">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Цвет: </span> {{element.color}} </p>
+      </div>
+      <div matColumnDef="productionYear">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Год выпуска: </span> {{element.productionYear}} </p>
+      </div>
+      <div matColumnDef="price">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Сумма: </span> {{element.price}} </p>
+      </div>
+      <div matColumnDef="lincencNumber">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>№ Лицензии: </span> {{element.lincencNumber}} </p>
+      </div>
+      <div matColumnDef="registrationCertificate">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Свидетельство о регистарации: </span> {{element.registrationCertificate}} </p>
+      </div>
+      <div matColumnDef="transit">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Транзит: </span> {{element.transit}} </p>
+      </div>
+      <div matColumnDef="userName">
+        <p mat-cell *matHeaderCellDef></p>
+        <p mat-cell *matCellDef="let element"><span>Кем выдан (лиц.): </span> {{element.userName}} </p>
+      </div>
+    <tr mat-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div mat-dialog-actions class="d-flex justify-content-center">
+    <button mat-fab color="primary" class="p-3" (click)="onNoClick()">ОК</button>
+  </div>
+</div>
+<div *ngIf="info.length === 0" class="text-center p-3">
+    <h3>Данные по данному БСО отсутствуют!</h3>
+    <button mat-fab color="primary" class="p-3" (click)="onNoClick()">ОК</button>
+</div> -->

@@ -1,5 +1,5 @@
 
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,9 +17,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     FormsModule,
@@ -37,7 +39,7 @@ import { FormsModule } from '@angular/forms';
       preventDuplicates: true,
     }),
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true

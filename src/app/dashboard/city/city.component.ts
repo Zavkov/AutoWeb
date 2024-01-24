@@ -4,22 +4,22 @@ import { MatDialog } from '@angular/material/dialog';
 import { City } from 'src/app/shared/Interfaces/Base.interface';
 import { AccessControlService } from 'src/app/shared/services/access-control.service';
 import { BaseService } from 'src/app/shared/services/base.service';
-import { DeleteComponent } from './delete/delete.component';
 import { EditComponent } from './edit/edit.component';
 import { filter, switchMap } from 'rxjs';
 import { AddComponent } from './add/add.component';
+import { DeleteComponent } from '../Dialogs/delete/delete.component';
 
 @Component({
   selector: 'app-city',
   templateUrl: './city.component.html',
   styleUrls: ['./city.component.css']
 })
-export class CityComponent implements OnInit {
+export class CityComponent implements OnInit { 
   form: FormGroup;
   displayedColumns = [
     'id',
     'name',
-    'actions',
+    'actions', 
   ];
   cities: City[] = [];
   constructor(
@@ -46,6 +46,7 @@ export class CityComponent implements OnInit {
         },
       });
     }
+    
     openDeleteDialog(id: number): void {
       const dialogRef = this.dialog.open(DeleteComponent, {
         data: id,
@@ -97,6 +98,6 @@ export class CityComponent implements OnInit {
         this.ngOnInit();
       });
     }
-}
+} 
 
 

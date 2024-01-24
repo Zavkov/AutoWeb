@@ -1,0 +1,16 @@
+.is-used{
+    color: rgb(152, 219, 152);
+}
+*{
+    font-family: "Times New Roman", Times, serif;
+}
+span {
+    border-radius:10px;
+    font-family: "Times New Roman", Times, serif;
+    background-color:#2a2042;
+    padding:12px;
+    color:#fff;
+}
+td{
+    cursor: pointer;
+}

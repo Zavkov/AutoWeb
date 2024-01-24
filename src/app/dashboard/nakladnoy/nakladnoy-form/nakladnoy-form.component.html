@@ -1,0 +1,47 @@
+<div class="p-3 bg">
+  <ul class="list-group mb-3 bg-light" *ngIf="operData">
+    <li class="list-group-item">
+      <span class="text-muted text-end"> ID :</span><span class="fw-bold ps-2">{{ operData.id }}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="text-muted text-end"> Серия Страховка :</span><span class="fw-bold ps-2">{{ operData.seriaName
+        }}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="text-muted text-end"> Номер Бланка Страховка :</span><span class="fw-bold ps-2">{{ operData.number
+        }}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="text-muted text-end"> Пункт ТО :</span><span class="fw-bold ps-2">{{ operData.companyName }}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="text-muted text-end"> Ползователь Пункт ТО :</span><span class="fw-bold ps-2">{{ operData.userName
+        }}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="text-muted text-end"> Тип Авто :</span><span class="fw-bold ps-2">{{ operData.vehicleModel }}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="text-muted text-end">Рег. номер : </span><span class="fw-bold ps-2">{{ operData.owner }}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="text-muted text-end">Год производства : </span><span class="fw-bold ps-2">{{ operData.dataIssued
+        }}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="text-muted text-end">Сервис номер : </span><span class="fw-bold ps-2">{{ operData.issuedPassportName
+        }}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="text-muted text-end">Дата проведения ТО: </span><span class="fw-bold ps-2">{{ operData.recordDate
+        }}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="text-muted text-end">Одобрено : </span><span class="fw-bold ps-2">{{ operData.isApproved? 'Нет' :
+        'Да' }}</span>
+    </li>
+  </ul>
+  <div>
+    <button class="btn btn-primary border-0 btn-ok p-3 text-center" (click)="closeDialog()" cdkFocusInitial>OK</button>
+  </div>
+</div>

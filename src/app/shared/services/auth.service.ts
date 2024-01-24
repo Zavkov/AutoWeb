@@ -9,26 +9,23 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  [x: string]: any;
-  private url:string;
-storeId: number;
+  private apiUrl: string;
 
-getStoreId():number{return this.storeId;}
-setStoreId(storeId: number) {this.storeId = storeId;}
-  
-constructor(
-  private http:HttpClient, 
-  private config:ConfigService, 
-  private router: Router
+  constructor(
+    private http: HttpClient,
+    private config: ConfigService,
+    private router: Router
   ) {
-    this.url = this.config.getApiUrl();
-   }
+    this.apiUrl = this.config.getApiUrl();
+  }
    
-   login(user: LoginUser):Observable<any>{
-    return this.http.post(`${this.url}api/account/sign-in`, user).pipe(tap(this.setToken));
-   }
+   login(user: LoginUser): Observable<any> {
+    return this.http.post(`${this.apiUrl}api/account/sign-in`, user).pipe(
+      tap(response => this.setToken(response))
+    );
+  }
 
-   setToken(response: any) {
+  setToken(response: any) {
     const expDate = new Date(response.expires * 1000);
     localStorage.setItem('accessToken', response.accessToken);
     localStorage.setItem('refreshToken', response.refreshToken);
@@ -40,30 +37,24 @@ constructor(
   }
   logout() {
     localStorage.clear();
-    this.router.navigateByUrl("/login")
-    // const refreshToken = localStorage.getItem('refreshToken');
-    // this.http
-    //   .post(`${this.url}api/account/tokens/${refreshToken}/revoke`, null)
-    //   .subscribe();
+    this.router.navigateByUrl('/login');
+  }
 
-    // localStorage.clear();
+getUserInfo(): Observable<UserInfo> {
+    return this.http.get<UserInfo>(`${this.apiUrl}api/account/user-info`);
   }
-  getUserInfo() {
-    return this.http.get<UserInfo>(`${this.url}api/account/user-info`);
-  }
+
   refreshToken(): Observable<any> {
     const refreshToken = localStorage.getItem('refreshToken');
-    return this.http
-      .post(`${this.url}api/account/tokens/${refreshToken}/refresh`, null)
-      .pipe(tap(this.setToken));
+    return this.http.post(`${this.apiUrl}api/account/tokens/${refreshToken}/refresh`, null).pipe(
+      tap(response => this.setToken(response))
+    );
   }
 
   changePassword(passwords: ChangePassword): Observable<ChangePassword> {
     return this.http.post<ChangePassword>(
-      `${this.url}api/user/change-password`,
+      `${this.apiUrl}api/user/change-password`,
       passwords
     );
   }
-
-
 }

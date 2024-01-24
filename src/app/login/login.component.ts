@@ -30,7 +30,7 @@ export class LoginComponent {
       ]),
       password: new FormControl(null, [
         Validators.required,
-        Validators.minLength(5),
+        Validators.minLength(3),
       ]),
     });
 

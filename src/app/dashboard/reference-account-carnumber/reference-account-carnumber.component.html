@@ -1,0 +1,136 @@
+<div class="container">
+    <div class="row one">
+        <div class="col-12">
+            <h4>Хисобнома/Справка-счет</h4>
+        </div>
+    </div><br>
+    <div class="row two">
+        <form method="post">
+            <div class="col-12 front_side">
+                <span>Лицевая сторона</span>
+                <div class="d-flex">
+                    <mat-form-field class="ser">
+                        <mat-label>Серия</mat-label>
+                        <mat-select formControlName="seriaId">
+                            <mat-option *ngFor="let seria of seria" [value]="seria.id">{{seria.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="w-25">
+                        <mat-label>№ Справка-счет</mat-label>
+                        <input matInput required formControlName="blankNumber">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="w-100">
+                        <mat-label>Название Фирми</mat-label>
+                        <input matInput placeholder="ҶДММ ......" required formControlName="companyId">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="w-100">
+                        <mat-label>Маҳалли барасмиятдарорӣ </mat-label>
+                        <input matInput required formControlName="address">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="w-25">
+                        <mat-label>Рақами бақайдгирии давлатӣ </mat-label>
+                        <input matInput required formControlName="carNumber">
+                    </mat-form-field>
+                </div>
+                <div class="side">
+                    <span>Аз тарафи</span>
+                    <div>
+                        <mat-form-field class="w-100">
+                            <mat-label>Насаб ном, номи падар </mat-label>
+                            <input matInput required formControlName="saleFio">
+                        </mat-form-field>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <mat-form-field class="w-25">
+                            <mat-label>силсилаи шиноснома</mat-label>
+                            <input matInput required formControlName="saleSPassport">
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                            <mat-label>рақами шиноснома</mat-label>
+                            <input matInput formControlName="saleNPassport">
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                            <mat-label>Интихоби ҷои шиноснома:</mat-label>
+                            <mat-select formControlName="issuedPassportId">
+                                <mat-option *ngFor="let issuedPassport of issuedPassport"
+                                    [value]="issuedPassport.id">{{issuedPassport.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>кай дода шудааст:</mat-label>
+                            <input matInput [matDatepicker]="datePassportGetSale" formControlName="datePassportGetSale">
+                            <mat-datepicker-toggle matIconSuffix [for]="datePassportGetSale"></mat-datepicker-toggle>
+                            <mat-datepicker #datePassportGetSale></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="side">
+                    <span>Ба ки фурухта шудааст:</span>
+                    <div>
+                        <mat-form-field class="w-100">
+                            <mat-label>Насаб ном, номи падар </mat-label>
+                            <input matInput required formControlName="buyFio">
+                        </mat-form-field>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <mat-form-field class="w-25">
+                            <mat-label>силсилаи шиноснома</mat-label>
+                            <input matInput required formControlName="buySPassport">
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                            <mat-label>рақами шиноснома</mat-label>
+                            <input matInput required formControlName="buyNPassport">
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                            <mat-label>Интихоби ҷои шиноснома:</mat-label>
+                            <mat-select formControlName="issuedPassportId">
+                                <mat-option *ngFor="let issuedPassport of issuedPassport"
+                                    [value]="issuedPassport.id">{{issuedPassport.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>кай дода шудааст:</mat-label>
+                            <input matInput [matDatepicker]="datePassportGetBuy" formControlName="datePassportGetBuy">
+                            <mat-datepicker-toggle matIconSuffix [for]="datePassportGetBuy"></mat-datepicker-toggle>
+                            <mat-datepicker #datePassportGetBuy></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="w-100">
+                            <mat-label>суроға </mat-label>
+                            <input matInput required formControlName="whomGetPassportBuy">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field class="w-100">
+                        <mat-label>асоси соҳибмулкии рақами бақайдгирии давлатӣ: </mat-label>
+                        <input matInput required formControlName="certificatePermissionCarNumber">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="w-25">
+                        <mat-label>нарх сомони: </mat-label>
+                        <input matInput required formControlName="price">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="w-25">
+                        <mat-label>фоизи подошпули:</mat-label>
+                        <input matInput required formControlName="pricePercent">
+                    </mat-form-field>
+                </div>
+            </div><br>
+            <div class="d-flex justify-content-center p-3">
+                <button type="button" class="btn btn-outline-secondary p-2">ТАФТИШИ ПЕШАКӢ</button>
+                <!-- <button type="button" class="btn btn-outline-dark p-2">ЧОПКУНӢ</button> -->
+            </div><br>
+        </form>
+    </div>
+</div>

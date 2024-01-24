@@ -1,0 +1,8 @@
+.btn-ok {
+  margin-left: 90%;
+}
+.bg {
+  -webkit-box-shadow: 2px 0px 32px 0px rgba(122, 23, 122, 1);
+  -moz-box-shadow: 2px 0px 32px 0px rgba(122, 23, 122, 1);
+  box-shadow: 2px 0px 32px 0px rgba(122, 23, 122, 1);
+}

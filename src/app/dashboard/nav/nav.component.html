@@ -6,25 +6,33 @@
             <div class="mainLink">
                 <button mat-button [matMenuTriggerFor]="firme">Регистрация</button>
                 <mat-menu #firme="matMenu" class="profi">
-                    <button mat-menu-item>Фирм</button>
-                    <button mat-menu-item>Магазинов</button>
-                    <button mat-menu-item>Бланки</button>
+                    <button mat-menu-item routerLink="/company">Фирм</button>
+                    <button mat-menu-item routerLink="/store">Магазинов</button>
+                    <button mat-menu-item routerLink="/blanka">Бланки</button>
+                    <button mat-menu-item routerLink="/nakladnoy">Накладной</button>
                     <button mat-menu-item routerLink="/users">Пользователей</button>
-                    <button mat-menu-item routerLink="/roles">Ролей</button>
-                    <button mat-menu-item routerLink="/cities">Справочник городов</button>
+
+                    <button mat-menu-item [matMenuTriggerFor]="dictionary">Справочники</button>
+                    <mat-menu #dictionary="matMenu">
+                        <button mat-menu-item routerLink="/roles">Доступ</button>
+                        <button mat-menu-item routerLink="/cities">Регионы</button>
+                        <button mat-menu-item routerLink="/colors">Цвета</button>
+                        <button mat-menu-item routerLink="/seria">Серии</button>
+                        <button mat-menu-item routerLink="/vehicle">Транспорное средство</button>
+                        <button mat-menu-item routerLink="/issuedPassport">Место выдачи паспорта</button>
+                    </mat-menu>
                 </mat-menu>
-                <button mat-button [matMenuTriggerFor]="blanks">Бланки</button>
-                <mat-menu #blanks="matMenu" class="profi">
-                    <button mat-menu-item>Общий список</button>
-                    <button mat-menu-item>Проданные</button>
-                    <button mat-menu-item>Неиспользованные</button>
+                <button mat-button [matMenuTriggerFor]="reference">Справки</button>
+                <mat-menu #reference="matMenu" class="profi">
+                    <button mat-menu-item routerLink="/referenceAccount">Справка-счёт</button>
+                    <button mat-menu-item routerLink="/referenceAccountCarnumber">Справка счёт(ракам тч)</button>
                 </mat-menu>
                 <button mat-button [matMenuTriggerFor]="reports">Отчеты</button>
                 <mat-menu #reports="matMenu" class="profi">
                     <button mat-menu-item>Справка отчетов</button>
                     <button mat-menu-item>Выгрузка</button>
                 </mat-menu>
-                <button mat-button>Поиск БСО</button>
+                <button mat-button routerLink="/search-bco">Поиск БСО</button>
                 <button mat-button>Операции</button>
             </div>
         </div>

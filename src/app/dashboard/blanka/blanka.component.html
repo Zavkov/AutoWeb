@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="row d-flex">
+    <div class="col-12 text-center">
+      <h1 class="text-uppercase text-muted">Общий список бланок </h1>
+    </div>
+  </div>
+</div>
+<div class="p-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-10 d-flex align-items-center">
+        <button mat-raised-button color="primary" (click)="OnAddClick()">
+          <mat-icon>add</mat-icon>
+          Добавить
+        </button>
+        <mat-form-field class="w-75 mt-2 mx-2">
+          <mat-label>Фильтр</mat-label>
+          <input matInput (keyup)="applyFilter($event)" #input>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="mat-elevation-z8 w-100">
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id"> 
+        <th mat-header-cell *matHeaderCellDef> № </th>
+        <td mat-cell *matCellDef="let element let i=index"
+          class="mat-paginator-cell">
+          {{i+1}}.
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="invoiceNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Номер бланки</th>
+        <td mat-cell *matCellDef="let row">
+          {{row.invoiceNumber}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="companyName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Фирма </th>
+        <td mat-cell *matCellDef="let row">
+          {{row.companyName}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="seriaName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Серия </th>
+        <td mat-cell *matCellDef="let row">
+          {{row.seriaName}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="recordDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата продажи </th>
+        <td mat-cell *matCellDef="let row">
+          {{row.recordDate | date:'dd/MM/yyyy' }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="numberFrom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Номер бланки от</th>
+        <td mat-cell *matCellDef="let row">
+          {{row.numberFrom}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="numberTo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Номер бланки до</th>
+        <td mat-cell *matCellDef="let row">
+          {{row.numberTo}}
+        </td> 
+      </ng-container>
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Пользователь
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{row.userName}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>
+          Действия
+        </th>
+        <td mat-cell *matCellDef="let element" class="mat-paginator-cell">
+          <button mat-icon-button color="primary" (click)="onEdit(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn"
+            *ngIf="accessControlService.canAccess('userDelete')"
+            (click)="openDeleteDialog(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tbody>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">
+            No data matching the filter
+            "{{input.value}}"
+          </td>
+        </tr>
+      </tbody>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of items"></mat-paginator>
+  </div>
+</div>

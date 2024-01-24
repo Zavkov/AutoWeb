@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9 mt-3">
+            <mat-card>
+                <div class="container">
+                    <h3 class="text-center">Список БСО</h3>
+                    <div class="row m-0">
+                        <table class="table table-hover table-striped">
+                            <thead class="text-center table-dark">
+                                <tr>
+                                    <th>№</th>
+                                    <th>Номер</th>
+                                    <th>От</th>
+                                    <th>До</th>
+                                    <th>Дата</th>
+                                    <th>Серия</th>
+                                    <th>Компания</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr [ngClass]="{ 'selected': blanka.isSelected }" *ngFor="let blanka of blanka"
+                                    (click)="getBlankasOfSelectedRequest(blanka)">
+                                    <td>{{blanka.id}}.</td>
+                                    <td>{{blanka.invoiceNumber}}</td>
+                                    <td>{{blanka.numberFrom}}</td>
+                                    <td>{{blanka.numberTo}}</td>
+                                    <td>{{blanka.recordDate | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{blanka.seriaName}}</td>
+                                    <td>{{blanka.companyName}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col-md-3 mt-3">
+            <mat-card>
+                <mat-progress-bar class="mt-3 mb-3" *ngIf="isLoaded" mode="indeterminate"></mat-progress-bar>
+                <mat-card-content>
+                    <mat-list role="list">
+                        <div class="row" [formGroup]="blankaOperationForm" *ngIf="blankaOperations">
+                            <div class="d-flex justify-content-around">
+                                <div class="col-md-4">
+                                    <mat-checkbox class="w-100" formControlName="isUsed">Использовано</mat-checkbox>
+                                </div>
+                                <div class="col-md-2">
+                                    <button mat-raised-button class="w-100" color="primary"
+                                        (click)="searchNakladnoyOperation()">
+                                        Поиск
+                                    </button>
+                                </div>
+                            </div>
+                            <br />
+                            <hr />
+                            <table class="table">
+                                <thead class="text-center table-dark">
+                                    <tr>
+                                        <th>№</th>
+                                        <th>Статус</th>
+                                        <th>Серия</th>
+                                        <th *ngIf="blankaOperations.find">Инфо</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <mat-list-item *ngFor="let nakladnoyOperation of blankaOperations">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div [ngClass]="nakladnoyOperation.isUsed ? 'is-used' : ''">
+                                    <p><strong> {{ nakladnoyOperation.id }}</strong>.</p>
+                                </div>
+                                <div>
+                                    <p class="f-green" [ngClass]="nakladnoyOperation.isUsed ? 'is-used' : ''">
+                                        <strong>{{nakladnoyOperation.isUsed ?'Использовано!':'Не
+                                            использовано!'}}</strong>
+                                    </p>
+                                </div>
+                                <p>{{ nakladnoyOperation.seriaName }}</p>
+                                <div>
+                                    <p>
+                                        <button title="информация" [disabled]="!nakladnoyOperation.isUsed" type="button"
+                                            class="btn btn-outline-primary"
+                                            (click)="info(nakladnoyOperation.seriaName, nakladnoyOperation.blankNumber)">Подробно..</button>
+                                    </p>
+
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

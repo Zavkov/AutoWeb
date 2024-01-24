@@ -7,13 +7,13 @@ import { BaseService } from 'src/app/shared/services/base.service';
 @Component({
   selector: 'app-edit-dialog',
   templateUrl: './edit-dialog.component.html',
-  styleUrls: ['./edit-dialog.component.scss']
+  styleUrls: ['./edit-dialog.component.css']
 })
 export class EditDialogComponent implements OnInit{
   roles: Role[];
-  stores:Store[];
-  formGroup:FormGroup;
-
+  stores:Store[]; 
+  formGroup:FormGroup; 
+ 
 constructor(
   private service:BaseService,
   private matDialogRef: MatDialogRef<EditDialogComponent>,

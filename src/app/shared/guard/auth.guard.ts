@@ -13,8 +13,10 @@ export class AuthGuard {
     private router: Router,
     private accessControlService: AccessControlService
   ) {}
+
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const token = this.authService.getToken();
+    
     if (!token) {
       this.router.navigate(['/login']);
       return of(false);

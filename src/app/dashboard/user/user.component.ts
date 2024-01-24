@@ -6,9 +6,9 @@ import { Subject, debounceTime, distinctUntilChanged, filter, switchMap } from '
 import { Role, Store, User } from 'src/app/shared/Interfaces/Base.interface';
 import { AccessControlService } from 'src/app/shared/services/access-control.service';
 import { BaseService } from 'src/app/shared/services/base.service';
-import { DeleteModelComponent } from './delete-model/delete-model.component';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
+import { DeleteComponent } from '../Dialogs/delete/delete.component';
 
 @Component({
   selector: 'app-user',
@@ -21,7 +21,7 @@ export class UserComponent {
     'id',
     'firstName',
     'secondName',
-    'surname',
+    'surname', 
     'phone',
     'address',
     'position',
@@ -49,7 +49,7 @@ export class UserComponent {
   ) {}
   ngOnInit() {
     this.searchFullNameQuery$
-      .pipe(debounceTime(2000), distinctUntilChanged())
+      .pipe(debounceTime(2000), distinctUntilChanged()) 
       .subscribe(() => {
         this.onSearchInputChange();
       });
@@ -110,11 +110,11 @@ export class UserComponent {
           this.pageIndex = v.currentPage - 1;
           this.totalItemsCount = v.totalCount;
      
-        },
+        }, 
       });
   }
   openDeleteDialog(id: number): void {
-    const dialogRef = this.dialog.open(DeleteModelComponent, {
+    const dialogRef = this.dialog.open(DeleteComponent, {
       data: id,
     });
     dialogRef.afterClosed().subscribe((result) => {
