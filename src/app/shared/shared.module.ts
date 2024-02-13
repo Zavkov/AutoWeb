@@ -39,6 +39,8 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from './pipes/search.pipe';
 
+
+
 @NgModule({
   declarations: [SearchPipe],
   imports: [MatFormFieldModule],

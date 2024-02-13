@@ -39,7 +39,11 @@ export class NakladnoyComponent implements OnInit {
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {}
-
+  displayedColumns = [
+    'id',
+    'name',
+    'actions', 
+  ];
   ngOnInit() {
     this.blankaForm = this.fb.group({
       invoiceNumber: [null, Validators.required],
@@ -61,7 +65,7 @@ export class NakladnoyComponent implements OnInit {
     });
     this.service.getBlanks().subscribe({
       next: (res) => {
-        this.blanka = res;
+        this.blanka = res; 
       },
       error: console.log,
     });
@@ -78,9 +82,7 @@ export class NakladnoyComponent implements OnInit {
 
   loadBlankaOperateion() {
     this.blankaOperationForm = this.fb.group({
-      invoiceNumber: [''],
       isUsed: [false],
-      seriaName: [null],
     });
   }
 

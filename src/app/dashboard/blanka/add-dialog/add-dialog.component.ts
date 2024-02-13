@@ -1,17 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Company, Seria, Store, User } from 'src/app/shared/Interfaces/Base.interface';
+import { Company, Seria } from 'src/app/shared/Interfaces/Base.interface';
 import { BaseService } from 'src/app/shared/services/base.service';
 
 @Component({
   selector: 'app-add-dialog:not(p)',
   templateUrl: './add-dialog.component.html',
   styleUrls: ['./add-dialog.component.css'],
-}) 
+})
 export class AddDialogComponent implements OnInit {
   company: Company[];
-  user: User[];
   seria: Seria[];
   formGroup: FormGroup;
 
@@ -30,7 +29,6 @@ export class AddDialogComponent implements OnInit {
       dataSale: [null],
       companyId: [null],
       seriaId: [null],
-      userId: [null], 
     });
     if (this.dialogData.id) {
       this.formGroup.patchValue(this.dialogData);
@@ -41,10 +39,7 @@ export class AddDialogComponent implements OnInit {
     this.service.getSeria().subscribe((res) => {
       this.seria = res;
     });
-    this.service.getUsers(1, 1000).subscribe({
-      next: (v) => (this.user = v.result),
-    });
-  }
+  } 
   create() {
     this.matDialogRef.close(this.formGroup.value);
   }

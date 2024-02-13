@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { MatDialog } from '@angular/material/dialog';
+ import { FormBuilder, FormGroup, } from '@angular/forms';
+ import { MatDialog } from '@angular/material/dialog';
 // import {
 //   Subject,
 //   debounceTime,
@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 //   filter,
 //   switchMap,
 // } from 'rxjs';
-// import { Auto, Blanka, Seria } from 'src/app/shared/Interfaces/Base.interface';
-// import { AccessControlService } from 'src/app/shared/services/access-control.service';
-// import { BaseService } from 'src/app/shared/services/base.service';
+ import { ReferenceAccount, Seria } from 'src/app/shared/Interfaces/Base.interface';
+ import { AccessControlService } from 'src/app/shared/services/access-control.service';
+ import { BaseService } from 'src/app/shared/services/base.service';
 // import { ViewInfoComponent } from './view-info/view-info.component';
 
 @Component({
@@ -19,21 +19,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-bco.component.css'],
 })
 export class SearchBcoComponent {
-  // form: FormGroup;
+ form: FormGroup;
 
-  // // auto: Auto[] = [];
-  // seria: Seria[] = [];
+ referenceAccount: ReferenceAccount[] = [];
+ seria: Seria[] = [];
   // searchBlankaNumber: string | null = null;
   // searchBlankaNumber$ = new Subject<string>();
-  // seriaNames: { [id: number]: string } = {};
-  // seriaId: number | null = null;
+ seriaNames: { [id: number]: string } = {};
+ seriaId: number | null = null;
 
-  // constructor(
-  //   private dialog: MatDialog,
-  //   private Service: BaseService,
-  //   public accessControlService: AccessControlService,
-  //   private fb: FormBuilder 
-  // ) {}
+  constructor(
+   private dialog: MatDialog,
+     private Service: BaseService,
+     public accessControlService: AccessControlService,
+    private fb: FormBuilder 
+   ) {}
 
   // ngOnInit() {
   //   this.form = this.fb.group({
@@ -56,12 +56,12 @@ export class SearchBcoComponent {
   // //     },
   // //   });
   // // }
-  // getSeria() {
-  //   this.Service.getSeria().subscribe({
-  //     next: (res) => {
-  //       this.seria = res;
-  //     },
-  //   });
+   getSeria() {
+   this.Service.getSeria().subscribe({
+      next: (res) => {
+       this.seria = res;
+       },
+   });
   // }
   // handlePaymentNumberInput(event: any) {
   //   this.searchBlankaNumber$.next(event.target.value);
@@ -85,4 +85,5 @@ export class SearchBcoComponent {
   //     data: { seriaId: seriaId, blankNumber: blankNumber },
   //   });
   // }
+   }
 }

@@ -142,13 +142,13 @@ onEdit(entity: any) {
     })
   ).subscribe((res) => {
     this.ngOnInit();
-  });
+  }); 
 }
 private AddDialog(entity: any) {
   return this.dialog.open(AddDialogComponent, {
     data: entity,
     disableClose: true,
-    maxHeight: '95vh',
+    maxHeight: '95vh', 
     width: '550px',
   }).afterClosed()
     .pipe(filter((result: any) => !!result)); 
@@ -161,7 +161,7 @@ OnAddClick() {
     })
   ).subscribe((res) => {
     this.ngOnInit();
-  });
+  }); 
 }
 
 }

@@ -6,3 +6,7 @@
   -moz-box-shadow: 2px 0px 32px 0px rgba(122, 23, 122, 1);
   box-shadow: 2px 0px 32px 0px rgba(122, 23, 122, 1);
 }
+.ps-2{
+  font-size:16px;
+  font-weight: 600;
+}

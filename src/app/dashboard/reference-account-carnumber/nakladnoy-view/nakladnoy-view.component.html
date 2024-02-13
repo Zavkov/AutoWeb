@@ -1,0 +1,74 @@
+<div class="row p-2">
+    <h1 class="text-center text-light">Предварительная информация</h1>
+</div>
+<div class="p-3">
+    <div id="divToPrintA5">
+        <div>
+            <h2><b>Пользователь:</b> {{firstName}} {{secondName}}</h2>
+            <h2><b>Магазин:</b> {{storeName}}</h2>
+        </div>
+        <hr />
+        <h1>Общая информация:</h1>
+        <div>
+            <h3><b>Серия:</b> {{data.seria}}</h3>
+        </div>
+        <div>
+            <h3><b>№ Справка-счета:</b> {{data.form.blankNumber}}</h3>
+        </div>
+        <div>
+            <h3><b>Место оформления:</b> {{data.form.placeRegistration}}</h3>
+        </div>
+        <div>
+            <h3><b>Гос номер транспорта:</b> {{data.form.carNumber}}</h3>
+        </div>
+        <div>
+            <h3><b>Адрес:</b> {{data.form.address}}</h3>
+        </div>
+        <div>
+            <h3><b>Основание на право гос номера:</b> {{data.form.certificatePermissionCarNumber}}</h3>
+        </div>
+        <div>
+            <h3><b>Цена в сомони:</b> {{data.form.price}} сомони</h3>
+        </div>
+        <div>
+            <h3><b>Процент НДС:</b> {{data.form.pricePercent}}%</h3>
+        </div>
+        <h1>Информация о продавце:</h1>
+        <div>
+            <h3><b>Ф.И.О:</b> {{data.form.saleFio}}</h3>
+        </div>
+        <div>
+            <h3><b>Серия паспорта:</b> {{data.form.saleSPassport}}</h3>
+        </div>
+        <div>
+            <h3><b>Номер паспорта:</b> {{data.form.saleNPassport}}</h3>
+        </div>
+        <div>
+            <h3><b>Место выдачи паспорта:</b> {{data.selIssuedPassport}}</h3>
+        </div>
+        <div>
+            <h3><b>Дата выдачи:</b> {{data.form.datePassportGetSale | date:'dd.MM.yyyy'}}</h3>
+        </div>
+        <h1>Информация о покупателе:</h1>
+        <div>
+            <h3><b>Ф.И.О:</b> {{data.form.buyFio}}</h3>
+        </div>
+        <div>
+            <h3><b>Серия паспорта:</b> {{data.form.buySPassport}}</h3>
+        </div>
+        <div>
+            <h3><b>Номер паспорта:</b> {{data.form.buyNPassport}}</h3>
+        </div>
+        <div>
+            <h3><b>Место выдачи паспорта:</b> {{data.buyIssuedPassport}}</h3>
+        </div>
+        <div>
+            <h3><b>Дата выдачи:</b> {{data.form.datePassportGetBuy | date:'dd.MM.yyyy'}}</h3>
+        </div>
+    </div>
+    <mat-dialog-actions align="end" class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" mat-dialog-close [disabled]="disabled">ОТМЕНА</button>
+        <button type="button" class="btn btn-default" (click)="OnAddClick()"
+            (click)="disabled = !disabled">ОДОБРИТЬ</button>
+    </mat-dialog-actions>
+</div>

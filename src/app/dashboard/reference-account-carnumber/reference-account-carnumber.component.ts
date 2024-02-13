@@ -1,64 +1,100 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  Company,
-  IssuedPassport,
-  Seria,
-  User,
-  Vehicle,
-} from 'src/app/shared/Interfaces/Base.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { filter, switchMap } from 'rxjs/operators';
 import { BaseService } from 'src/app/shared/services/base.service';
+import { NakladnoyViewComponent } from './nakladnoy-view/nakladnoy-view.component';
+import {
+  IssuedPassport,
+  ReferenceAccountCarnumber,
+  Seria,
+  Store,
+} from 'src/app/shared/Interfaces/Base.interface';
+import { AccessControlService } from 'src/app/shared/services/access-control.service';
 
 @Component({
   selector: 'app-reference-account-carnumber',
   templateUrl: './reference-account-carnumber.component.html',
   styleUrls: ['./reference-account-carnumber.component.css'],
 })
-export class ReferenceAccountCarnumberComponent {
-  company: Company[];
-  user: User[];
+export class ReferenceAccountCarnumberComponent implements OnInit {
   seria: Seria[];
-  vehicle: Vehicle[];
-  issuedPassport: IssuedPassport[];
   formGroup: FormGroup;
-  constructor(private service: BaseService, private fb: FormBuilder) {}
+  issuedPassport: IssuedPassport[];
+
+  constructor(
+    private service: BaseService,
+    private dialog: MatDialog,
+    private fb: FormBuilder,
+    public accessControlService: AccessControlService
+  ) {}
+
   ngOnInit(): void {
-    this.formGroup = this.fb.group({
+    this.formGroup = this.fb.group({ 
       blankNumber: [null, Validators.required],
-      companyId: [null, Validators.required],
-      vehicleId: [null, Validators.required],
-      seriaId: [null],
-      issuedPassportId: [null],
-      dateSaled: [Date.now],
+      seriaId: [null, Validators.required],
+      placeRegistration: [null, Validators.required],
       carNumber: [null, Validators.required],
-      address: [null],
+      address: [null, Validators.required],
+      selIssuedPassportId: [null, Validators.required],
+      buyIssuedPassportId: [null, Validators.required],
       saleFio: [null, Validators.required],
-      saleSPassport: [null, Validators.required],
+      saleSPassport: [null, [Validators.required, Validators.pattern('[A-Z]')]],
       saleNPassport: [null, Validators.required],
-      datePassportGetSale: [null],
+      datePassportGetSale: [null, Validators.required],
       buyFio: [null, Validators.required],
-      buySPassport: [null, Validators.required],
+      buySPassport: [null, [Validators.required, Validators.pattern('[A-Z]')]],
       buyNPassport: [null, Validators.required],
-      whomGetPassportBuy: [null],
-      datePassportGetBuy: [null],
+      datePassportGetBuy: [null, [Validators.required]],
       certificatePermissionCarNumber: [null, Validators.required],
-      price: [null, Validators.required],
-      pricePercent: [null],
+      price: [null, [Validators.required, Validators.pattern('^[0-9]*$')]],
+      pricePercent: [
+        null,
+        [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$')],
+      ],
     });
-    this.service.getCompany().subscribe((res) => {
-      this.company = res;
-    });
+    if (this.dialog) {
+      this.formGroup.patchValue(this.dialog);
+    }
     this.service.getSeria().subscribe((res) => {
       this.seria = res;
-    });
-    this.service.getUsers(1, 1000).subscribe({
-      next: (v) => (this.user = v.result),
-    });
-    this.service.getVehicle().subscribe((res) => {
-      this.vehicle = res;
     });
     this.service.getIssuedPassport().subscribe((res) => {
       this.issuedPassport = res;
     });
+  }
+  public OpenDialog(entity: any) {
+    const formValues: ReferenceAccountCarnumber = this.formGroup.value;
+    return this.dialog
+      .open(NakladnoyViewComponent, {
+        data: {
+          form: formValues,
+          seria: this.seria.find((s) => s.id == formValues.seriaId)?.name,
+          selIssuedPassport: this.issuedPassport.find(
+            (i) => i.id == formValues.selIssuedPassportId
+          )?.name,
+          buyIssuedPassport: this.issuedPassport.find(
+            (i) => i.id == formValues.buyIssuedPassportId
+          )?.name,
+        },
+        disableClose: true,
+        maxHeight: '100vh',
+        width: '40%',
+      })
+      .afterClosed()
+      .pipe(filter((result: any) => !!result));
+  }
+  OnAddClick() {
+    this.OpenDialog({}) 
+      .pipe(
+        switchMap((b: boolean) => {
+          return this.service.addReferenceAccountCarnumber(
+            this.formGroup.value
+          );
+        })
+      )
+      .subscribe((res) => {
+        this.ngOnInit();
+      });
   }
 }

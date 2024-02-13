@@ -1,0 +1,25 @@
+h1,
+button {
+  font-family: Time New Romanes;
+  font-weight: 700;
+}
+
+button {
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+h2 {
+  font-family: Time New Romanes;
+  font-size: 25px;
+  margin-top:-15px;
+}
+h3 {
+  font-family: Time New Romanes;
+  font-size: 18px;
+  margin-top:-12px;
+}
+.row{
+    background-color:#2a2042;
+    color:#fff;
+}

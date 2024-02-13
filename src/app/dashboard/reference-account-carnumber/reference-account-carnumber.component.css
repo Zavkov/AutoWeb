@@ -3,8 +3,8 @@ h4 {
   text-align: center;
   font-size: 25px;
   color: #fff;
-  padding-top:10px;
-  padding-bottom:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .one {
   background-color: #2a2042;
@@ -45,9 +45,9 @@ span {
   border-bottom: 1px solid #cacacf;
   border-left: 1px solid #cacacf;
 }
-.btn{
-    width:20%;
-    text-align:center;
-    margin-right:5px;
-    font-family: Time New Romanes;
+.btn {
+  width: 20%;
+  text-align: center;
+  margin-right: 5px;
+  font-family: Time New Romanes;
 }

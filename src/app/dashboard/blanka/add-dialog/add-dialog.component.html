@@ -24,12 +24,6 @@
         <mat-datepicker #dataSale></mat-datepicker>
       </mat-form-field>
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Выдал</mat-label>
-        <mat-select formControlName="userId">
-          <mat-option *ngFor="let user of user" [value]="user.id">{{user.firstName}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="w-100">
         <mat-label>Серия</mat-label>
         <mat-select formControlName="seriaId">
           <mat-option *ngFor="let seria of seria" [value]="seria.id">{{seria.name}}</mat-option>

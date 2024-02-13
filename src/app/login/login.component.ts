@@ -8,21 +8,19 @@ import { LoginUser } from '../shared/Interfaces/Base.interface';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   loginText: string = 'Введите логин';
   passwordText: string = 'Введите пароль';
-
+  processing = false;
   form: FormGroup;
-
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private accessControlService: AccessControlService
-  ) 
-  {
+  ) {
     this.form = new FormGroup({
       login: new FormControl(null, [
         Validators.required,
@@ -56,7 +54,7 @@ export class LoginComponent {
       password: this.form.value.password,
     };
     this.authService.login(user).subscribe({
-      next: () => {                
+      next: () => {
         this.authService.getUserInfo().subscribe({
           next: (userInfo) => {
             this.accessControlService.setUserInfo(userInfo);
@@ -71,5 +69,4 @@ export class LoginComponent {
       },
     });
   }
-
 }

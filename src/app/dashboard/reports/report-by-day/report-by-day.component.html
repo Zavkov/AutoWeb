@@ -1,0 +1,100 @@
+<div class="container p-3">
+    <h2 class="text-center">Отчет подням по БСО </h2>
+    <div class="d-flex justify-content-between">
+        <div>
+            <h3>За период с: <span>{{fetchCriterias.fromDate}}</span> по: <span>{{fetchCriterias.toDate}}</span></h3>
+            <h3>Название магазина: <span> {{storeName}}</span></h3>
+        </div>
+        <div>
+            <button class="btn btn-primary p-3" (click)="onExport()">
+                <i class="material-icons align-middle">note_add</i>Экспорт
+            </button>
+        </div>
+    </div>
+</div>
+<div class=" container ">
+    <form [formGroup]="form" class="d-flex ">
+        <mat-form-field appearance="outline" class="p-3 w-25">
+            <mat-label>От</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="fromDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="p-3 w-25">
+            <mat-label>До</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="toDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="p-3 w-50">
+            <mat-label>Выбор магазина</mat-label>
+            <mat-select formControlName="storeId" multiple>
+                <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">Все</mat-option>
+                <mat-option *ngFor="let store of store " [value]="store.id"
+                    (click)="togglePerOne()">{{store.fullname}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div>
+            <button class="btn btn-primary p-3" (click)="onSearch()" style="margin-top:12px;" [disabled]="!form.valid">
+                <i class="material-icons align-middle">search</i>
+            </button>
+        </div>
+    </form>
+</div>
+<div class="mat-elevation-z8 p-3" #TABLE>
+    <mat-form-field class="w-50">
+        <mat-label> Фильт...</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Название ..." #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" matSort matSortStart="desc" matSortDirection="asc" matSortDisableClearw
+        class="stripped" #table>
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> № </th>
+            <td mat-cell *matCellDef="let element let i=index" class="mat-paginator-cell">
+                {{i+1}}.
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="referenceNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Номер бланка </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.referenceNumber}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="owner">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Владелец </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.owner}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="storeName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Магазин </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.storeName}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="seriaName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Серия </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.seriaName}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="vehicleName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Мадель </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.vehicleName}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="issuedPassportName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Место выдачи паспорта </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.issuedPassportName}}
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+<div class="container-fluid p-5">
+    <h3>Всего автомобилей: <span class="red">{{totalCount}}</span></h3>
+</div>

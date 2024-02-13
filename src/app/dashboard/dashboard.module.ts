@@ -19,7 +19,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { NakladnoyComponent } from './nakladnoy/nakladnoy.component';
 import { RoleComponent } from './role/role.component';
 import { ColorComponent } from './color/color.component';
-
+import { ReportByDayComponent } from './reports/report-by-day/report-by-day.component';
+import { DatePipe } from '@angular/common';
 const routes: Routes = [
   {
     path: '',
@@ -125,8 +126,25 @@ const routes: Routes = [
         loadChildren: () =>
           import('./nakladnoy/nakladnoy.module').then((m) => m.NakladnoyModule),
       },
+      {
+        path:'by-day',
+        title:'Отчет по дням',
+        loadChildren: () =>
+          import('./reports/report-by-day/report-by-day.module').then((m) => m.ReportByDayModule),
+      }
     ],
   },
+  // {
+  //   path: 'by-day',
+  //   canActivate: [AuthGuard],
+  //   data: {
+  //     breadcrumb: 'по дням',
+  //     permissions: {
+  //       only: ['allFunctionals'],
+  //     },
+  //   },
+  //   component:ReportByDayComponent
+  // },
 ];
 
 @NgModule({
@@ -145,6 +163,7 @@ const routes: Routes = [
     ReferenceAccountComponent,
     RoleComponent,
     ColorComponent,
+    ReportByDayComponent,
   ],
   imports: [
     SharedModule,
@@ -153,6 +172,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatFormFieldModule,
     MatExpansionModule,
+    DatePipe
   ],
 })
 export class DashboardModule {}

@@ -41,7 +41,7 @@ export class EditComponent implements OnInit {
    if(this.dialogData.id){
     this.formGroup.patchValue(this.dialogData);
 
-  }
+  } 
   this.service.getCities().subscribe((res)=>{
     this.city = res;
   });

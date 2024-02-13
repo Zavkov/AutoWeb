@@ -5,150 +5,136 @@
         </div>
     </div><br>
     <div class="row two">
-        <form method="post">
+        <form method="post" [formGroup]="formGroup">
             <div class="col-12 front_side">
                 <span>Лицевая сторона</span>
                 <div class="d-flex">
-                    <mat-form-field class="ser">
+                    <mat-form-field class="ser p-1">
                         <mat-label>Серия</mat-label>
-                        <mat-select>
-                            <mat-option value="primary">AB</mat-option>
-                            <mat-option value="accent">C</mat-option>
-                            <mat-option value="warn">D</mat-option>
+                        <mat-select formControlName="seriaId">
+                            <mat-option *ngFor="let seria of seria" [value]="seria.id">{{seria.name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="w-25">
+                    <mat-form-field class="w-25 p-1">
                         <mat-label>№ Справка-счет</mat-label>
-                        <input matInput required>
+                        <input matInput required formControlName="referenceNumber">
                     </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field class="w-100">
-                        <mat-label>Название Фирми</mat-label>
-                        <input matInput placeholder="ҶДММ ......" required
-                            value="ҶДММ Муосири Сугд (ҶДММ Муосири Сугд)">
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field class="w-100">
+                    <mat-form-field class="w-75 p-1">
                         <mat-label>соҳиб/собственник </mat-label>
-                        <input matInput required>
+                        <input matInput required formControlName="owner">
                     </mat-form-field>
                 </div>
                 <div>
-                    <mat-form-field class="w-100">
+                    <mat-form-field class="w-75 p-1">
                         <mat-label>Суроғаи соҳиб / адрес владельца </mat-label>
-                        <input matInput required>
+                        <input matInput required formControlName="ownerAddress">
+                    </mat-form-field>
+                    <mat-form-field class="w-25 p-1">
+                        <mat-label>Дата рождения</mat-label>
+                        <input matInput [matDatepicker]="dataBirth" formControlName="dataBirth">
+                        <mat-datepicker-toggle matIconSuffix [for]="dataBirth"></mat-datepicker-toggle>
+                        <mat-datepicker #dataBirth></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="d-flex justify-content-around">
+                    <mat-form-field class="w-25">
+                        <mat-label>Серия паспорта</mat-label>
+                        <input matInput required formControlName="sPassport">
+                    </mat-form-field>
+                    <mat-form-field class="w-25">
+                        <mat-label>рақами шиноснома</mat-label>
+                        <input matInput required formControlName="nPassport">
+                    </mat-form-field>
+                    <mat-form-field class="w-25">
+                        <mat-label>Интихоби ҷои шиноснома:</mat-label>
+                        <mat-select formControlName="issuedPassportId">
+                            <mat-option *ngFor="let issuedPassport of issuedPassport"
+                                [value]="issuedPassport.id">{{issuedPassport.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>кай дода шудааст:</mat-label>
+                        <input matInput [matDatepicker]="dataIssued" formControlName="dataIssued">
+                        <mat-datepicker-toggle matIconSuffix [for]="dataIssued"></mat-datepicker-toggle>
+                        <mat-datepicker #dataIssued></mat-datepicker>
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="w-100">
                         <mat-label>Выбор (автомобиль/мотоцикл)</mat-label>
-                        <mat-select>
+                        <mat-select formControlName="vehicleType">
                             <mat-option value="primary">Автомобил</mat-option>
                             <mat-option value="accent">Мототсикл</mat-option>
                             <mat-option value="warn">Дигар намуд</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="d-flex justify-content-around">
-                    <mat-form-field class="w-25">
-                        <mat-label>силсилаи шиноснома</mat-label>
-                        <input matInput required>
-                    </mat-form-field>
-                    <mat-form-field class="w-25">
-                        <mat-label>рақами шиноснома</mat-label>
-                        <input matInput required>
-                    </mat-form-field>
-                    <mat-form-field class="w-25">
-                        <mat-label>Интихоби ҷои шиноснома:</mat-label>
-                        <mat-select>
-                            <mat-option value="primary">ШКД-1</mat-option>
-                            <mat-option value="accent">ШКД-2</mat-option>
-                            <mat-option value="warn">ШКД-3</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>кай дода шудааст:</mat-label>
-                        <input matInput [matDatepicker]="dp">
-                        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-                        <mat-datepicker #dp></mat-datepicker>
-                    </mat-form-field>
-                </div>
                 <div>
-                    <mat-form-field class="w-25">
-                        <mat-label>Дата рождения</mat-label>
-                        <input matInput [matDatepicker]="dp">
-                        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-                        <mat-datepicker #dp></mat-datepicker>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field class="w-100">
+                    <mat-form-field class="w-75 p-1">
                         <mat-label>Фрухта шуд: автомобиль (мототцикл, ядак, агрегати ракамдор/продан:автомобиль
                             (мотоцикл, прицеп, номерной агрегат))</mat-label>
-                        <mat-select>
-                            <mat-option value="primary">Автомобил</mat-option>
-                            <mat-option value="accent">Мототсикл</mat-option>
-                            <mat-option value="warn">Дигар намуд</mat-option>
+                        <mat-select formControlName="vehicleModel">
+                            <mat-option value="primary">АВТОМОБИЛ</mat-option>
+                            <mat-option value="accent">МОТОЦИКЛ</mat-option>
+                            <mat-option value="accent">ЯДАК</mat-option>
+                            <mat-option value="accent">ТРАКТОР</mat-option>
+                            <mat-option value="accent">АГРЕГАТИ РАКАМДОР</mat-option>
                         </mat-select>
                     </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field class="w-50">
+                    <mat-form-field class="w-25 p-1">
                         <mat-label>тамга: навъ/марка, модель (выбор из справочника обязательно)</mat-label>
-                        <mat-select>
-                            <mat-option value="primary">Опел</mat-option>
-                            <mat-option value="accent">Тайота</mat-option>
-                            <mat-option value="warn">Дигар намуд</mat-option>
+                        <mat-select formControlName="vehicleId">
+                            <mat-option *ngFor="let vehicle of vehicle"
+                                [value]="vehicle.id">{{vehicle.name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
                 <div class="d-flex justify-content-around">
                     <mat-form-field class="w-25">
                         <mat-label>ҷои нишаст/число мест</mat-label>
-                        <input matInput required>
+                        <input matInput formControlName="vehiclePlace">
                     </mat-form-field>
                     <mat-form-field class="w-25">
                         <mat-label>шасси (VIN) №</mat-label>
-                        <input matInput required>
+                        <input matInput formControlName="vehicleShasi">
                     </mat-form-field>
                     <mat-form-field class="w-25">
                         <mat-label>кузов (VIN) №</mat-label>
-                        <input matInput required>
+                        <input matInput formControlName="vehicleKuzov">
                     </mat-form-field>
                 </div>
                 <div class="d-flex justify-content-around">
                     <mat-form-field class="w-25">
                         <mat-label>рама №</mat-label>
-                        <input matInput required>
+                        <input matInput formControlName="vehicleRama">
                     </mat-form-field>
-                    <mat-form-field class="w-25">
-                        <mat-label>Ранг/Цвет</mat-label>
-                        <input matInput required>
+                    <mat-form-field class="w-25 p-1">
+                        <mat-label>Цвет (выбор из справочника обязательно)</mat-label>
+                        <mat-select formControlName="colorId">
+                            <mat-option *ngFor="let color of color" [value]="color.id">{{color.name}}</mat-option>
+                        </mat-select>
                     </mat-form-field>
                     <mat-form-field class="w-25">
                         <mat-label>Соли барориш/год выпуска</mat-label>
-                        <input matInput [matDatepicker]="dp">
-                        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-                        <mat-datepicker #dp></mat-datepicker>
+                        <input matInput [matDatepicker]="vehicleDataProFrom" formControlName="vehicleDataProFrom">
+                        <mat-datepicker-toggle matIconSuffix [for]="vehicleDataProFrom"></mat-datepicker-toggle>
+                        <mat-datepicker #vehicleDataProFrom></mat-datepicker>
                     </mat-form-field>
                 </div>
                 <section class="example-section">
-                    <mat-checkbox class="example-margin"
-                        [(ngModel)]="disabled"><span>Шартномавӣ/Договарная</span></mat-checkbox>
+                    <mat-checkbox class="example-margin" formControlName="contractual" ><span>Шартномавӣ/Договарная</span></mat-checkbox>
                 </section>
                 <div>
-                    <mat-form-field class="w-25">
+                    <mat-form-field class="w-25 p-1">
                         <mat-label>Нарх сомони/стоимость в сомони</mat-label>
-                        <input matInput required [disabled]="disabled">
+                        <input matInput formControlName="vehiclePrice">
                     </mat-form-field>
                 </div>
                 <div>
-                    <mat-form-field class="w-100">
+                    <mat-form-field class="w-100 p-1">
                         <mat-label>Шаҳодатномаи бақайдгирии воситаи нақлиёт/паспорт ТС или свидетельство о
                             регистрации</mat-label>
-                        <input matInput required [disabled]="disabled">
+                        <input matInput formControlName="vehicleRegistrationCertificate">
                     </mat-form-field>
                 </div>
                 <div class="side">
@@ -156,50 +142,49 @@
                     <div>
                         <mat-form-field class="w-25">
                             <mat-label>Пул ба маблағи/деньги в сумме</mat-label>
-                            <input matInput required>
+                            <input matInput formControlName="priceProps">
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field class="w-100">
                             <mat-label>№ литсензияи ҳуқуқи Фуруши автомобилҳо/№ лицензии на право продажи
                                 автомобилями</mat-label>
-                            <input matInput required>
+                            <input matInput formControlName="licenceNumber">
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field class="w-100">
                             <mat-label>Аз тарафи ки додашудааст/кем выдан</mat-label>
-                            <input matInput required>
+                            <input matInput formControlName="whomIssued">
                         </mat-form-field>
                     </div>
                     <div>
-                        <mat-form-field class="w-50">
+                        <mat-form-field class="w-25 p-1">
                             <mat-label>Дата выдачи лицензии</mat-label>
-                            <input matInput [matDatepicker]="dp">
-                            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-                            <mat-datepicker #dp></mat-datepicker>
+                            <input matInput [matDatepicker]="dateLiceFrom" formControlName="dateLiceFrom">
+                            <mat-datepicker-toggle matIconSuffix [for]="dateLiceFrom"></mat-datepicker-toggle>
+                            <mat-datepicker #dateLiceFrom></mat-datepicker>
                         </mat-form-field>
-                    </div>
-                    <div>
-                        <mat-form-field class="w-50">
+                        <mat-form-field class="w-25 p-1">
                             <mat-label>Срок действия лицензии до ..</mat-label>
-                            <input matInput [matDatepicker]="dp">
-                            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-                            <mat-datepicker #dp></mat-datepicker>
+                            <input matInput [matDatepicker]="dateLiceTo" formControlName="dateLiceTo">
+                            <mat-datepicker-toggle matIconSuffix [for]="dateLiceTo"></mat-datepicker-toggle>
+                            <mat-datepicker #dateLiceTo></mat-datepicker>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field class="w-100">
                             <mat-label>Рақами бақайдгирии "Транзит" дода шуд/Выдан регистрационный номер
                                 "Транзит"</mat-label>
-                            <input matInput required>
+                            <input matInput formControlName="tranzitNumber">
                         </mat-form-field>
                     </div>
                 </div><br>
                 <div class="d-flex justify-content-center p-3">
-                    <button type="button" class="btn btn-outline-secondary p-2">ТАФТИШИ ПЕШАКӢ</button>
-                    <!-- <button type="button" class="btn btn-outline-dark p-2">ЧОПКУНӢ</button> -->
-                </div><br>
+                    <button type="submit" class="btn btn-outline-secondary p-2" (click)="OnAddClick()">ТАФТИШИ
+                        ПЕШАКӢ</button>
+
+                </div>
             </div><br>
         </form>
     </div>

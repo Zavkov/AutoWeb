@@ -1,0 +1,47 @@
+<div class="row p-2">
+    <h1 class="text-center text-light">Предварительная информация</h1>
+</div>
+<div class="p-3">
+    <div id="divToPrintA5">
+        <div>
+            <h2><b>Пользователь:</b> {{firstName}} {{secondName}}</h2>
+            <h2><b>Магазин:</b> {{storeName}}</h2>
+        </div>
+        <hr />
+        <h1>Лицева сторона:</h1>
+        <div>
+            <h3><b>Серия: </b> {{data.seria}}</h3>
+            <h3><b>№ Справка-счета: </b> {{data.form.referenceNumber}}</h3>
+            <h3><b>Собственник: </b> {{data.form.owner}}</h3>
+            <h3><b>Адрес собственника:</b> {{data.form.ownerAddress}}</h3>
+            <h3><b>Дата рождения: </b> {{data.form.dataBirth}}</h3>
+            <h3><b>Серия паспорта: </b> {{data.form.sPassport}}</h3>
+            <h3><b>Номер паспорта: </b> {{data.form.nPassport}}</h3>
+            <h3><b>Место выдачи паспорта: </b> {{data.issuedPassport}}</h3>
+            <h3><b>Дата выдачи паспорта: </b> {{data.form.dataIssued}}</h3>
+            <h3><b>Тип транспорта: </b> {{data.form.vehicleType}}</h3>
+            <h3><b>Был продан транспорт: </b> {{data.form.vehicleModel}}</h3>
+            <h3><b>Модель:</b> {{data.vehicle}} <b>Пасадачное место:</b> {{data.form.vehiclePlace}} <b>Шасси:</b>
+                {{data.form.vehicleShasi}} <b>Кузов: </b> {{data.form.vehicleKuzov}} <b>Рама: </b>
+                {{data.form.vehicleRama}} <b>Цвет: </b> {{data.color}} <b>Год выпуска: </b> {{data.form.vehicleDataProFrom
+                | date}}</h3>
+            <h3><b>Договорная/Шартномави: </b>{{data.form.contractual ? ' Да':' Нет'}} </h3>
+            <h3><b>Цена в сомони: </b>{{data.form.vehiclePrice}} </h3>
+            <h3><b>Свидетельство о регистрации: </b>{{data.form.vehicleRegistrationCertificate}} </h3>
+        </div>
+        <h1>Обратная сторона:</h1>
+        <div>
+            <h3><b>Сумма </b> {{data.form.priceProps}}</h3>
+            <h3><b>№ лицензии на право продажи автомобилями: </b> {{data.form.licenceNumber}}</h3>
+            <h3><b>Кем выдан: </b> {{data.form.whomIssued}}</h3>
+            <h3><b>Дата выдачи лицензии: </b> {{data.form.dateLiceFrom | date}}</h3>
+            <h3><b>Срок действия лицензии до: </b> {{data.form.dateLiceTo | date}}</h3>
+            <h3><b>Регистрационный номер "Транзит": </b> {{data.form.tranzitNumber}}</h3>
+        </div>
+    </div>
+    <mat-dialog-actions align="end" class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" mat-dialog-close [disabled]="disabled">ОТМЕНА</button>
+        <button type="button" class="btn btn-default" (click)="OnAddClick()"
+            (click)="disabled = !disabled">ОДОБРИТЬ</button>
+    </mat-dialog-actions>
+</div>

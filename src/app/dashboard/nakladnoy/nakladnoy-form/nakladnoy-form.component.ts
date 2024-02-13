@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IBlankaOperationNakladnoy } from 'src/app/shared/Interfaces/Base.interface';
 
@@ -13,12 +13,10 @@ export class NakladnoyFormComponent {
   operData: IBlankaOperationNakladnoy;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: IBlankaOperationNakladnoy,
-    private dialogRef: MatDialogRef<NakladnoyFormComponent>,
-    private fb: FormBuilder
-  ) {
-    this.operData = data;
-  }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<NakladnoyFormComponent>
+  ) {}
+
   ngOnInit(): void {}
 
   closeDialog() {

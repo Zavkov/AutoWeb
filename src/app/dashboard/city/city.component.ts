@@ -12,92 +12,94 @@ import { DeleteComponent } from '../Dialogs/delete/delete.component';
 @Component({
   selector: 'app-city',
   templateUrl: './city.component.html',
-  styleUrls: ['./city.component.css']
+  styleUrls: ['./city.component.css'],
 })
-export class CityComponent implements OnInit { 
+export class CityComponent implements OnInit {
   form: FormGroup;
-  displayedColumns = [
-    'id',
-    'name',
-    'actions', 
-  ];
+  displayedColumns = ['id', 'name', 'actions'];
   cities: City[] = [];
   constructor(
-    private Service: BaseService, 
-    private dialog:MatDialog,
-    public accessControlService: AccessControlService)
-    {
-      this.form = new FormGroup({
-        name: new FormControl(null, [
-          Validators.required,
-          Validators.minLength(3),
-        ]),
-      });
-    }
+    private Service: BaseService,
+    private dialog: MatDialog,
+    public accessControlService: AccessControlService
+  ) {
+    this.form = new FormGroup({
+      name: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+    });
+  }
 
-    ngOnInit(): void {
-      this.getCitiesData();
-    }
+  ngOnInit(): void {
+    this.getCitiesData();
+  }
 
-    getCitiesData() {
-      this.Service.getCities().subscribe({
-        next: (v) => {
-          this.cities = v;
-        },
-      });
-    }
-    
-    openDeleteDialog(id: number): void {
-      const dialogRef = this.dialog.open(DeleteComponent, {
-        data: id,
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (result) {
-          this.Service.deleteCity(id).subscribe({
-            next: () => {
-              this.getCitiesData();
-            },
-          });
-        }
-      });
-    }
-    private openDialog(entity: any) {
-      return this.dialog.open(EditComponent, {
+  getCitiesData() {
+    this.Service.getCities().subscribe({
+      next: (v) => {
+        this.cities = v;
+      },
+    });
+  }
+
+  openDeleteDialog(id: number): void {
+    const dialogRef = this.dialog.open(DeleteComponent, {
+      data: id,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.Service.deleteCity(id).subscribe({
+          next: () => {
+            this.getCitiesData();
+          },
+        });
+      }
+    });
+  }
+  private openDialog(entity: any) {
+    return this.dialog
+      .open(EditComponent, {
         data: entity,
         disableClose: true,
         maxHeight: '95vh',
         width: '500px',
-      }).afterClosed()
-        .pipe(filter((result: any) => !!result));
-    }
-    onEdit(entity: any) {
-      this.openDialog(entity).pipe(
+      })
+      .afterClosed()
+      .pipe(filter((result: any) => !!result));
+  }
+  onEdit(entity: any) {
+    this.openDialog(entity)
+      .pipe(
         switchMap((entityUp: any) => {
           return this.Service.updateCity(entityUp);
         })
-      ).subscribe((res) => {
+      )
+      .subscribe((res) => {
         this.ngOnInit();
       });
-    }
-    private AddDialog(entity: any) {
-      return this.dialog.open(AddComponent, {
+  }
+  private AddDialog(entity: any) {
+    return this.dialog
+      .open(AddComponent, {
         data: entity,
         disableClose: true,
         maxHeight: '95vh',
         width: '500px',
-      }).afterClosed()
-        .pipe(filter((result: any) => !!result));
-    }
-  
-    OnAddClick() {
-      this.AddDialog({}).pipe(
+      })
+      .afterClosed()
+      .pipe(filter((result: any) => !!result));
+  }
+
+  OnAddClick() {
+    this.AddDialog({})
+      .pipe(
         switchMap((newEntity: any) => {
           return this.Service.addCity(newEntity);
         })
-      ).subscribe((res) => {
+      )
+      .subscribe((res) => {
         this.ngOnInit();
       });
-    }
-} 
-
-
+  }
+}

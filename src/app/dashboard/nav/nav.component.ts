@@ -20,7 +20,7 @@ export class NavComponent {
     public accessControlService: AccessControlService,
     private dialog: MatDialog
   ) {
-    this.accessControlService
+    this.accessControlService 
       .getUserInfo()
       .pipe(map((userInfo) => userInfo?.firstName || ''))
       .subscribe((username) => {

@@ -24,7 +24,7 @@ import {
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root', 
 })
 export class BaseService {
   protected urla = 'https://localhost:7134/api/Blanka/';
@@ -328,7 +328,7 @@ export class BaseService {
     data: ReferenceAccountCarnumber
   ): Observable<ReferenceAccountCarnumber> {
     return this.http.post<ReferenceAccountCarnumber>(
-      `${this.url}api/ReferenceAccountCarnumber/AddReferenceAccountCarnumber`,
+      `${this.url}api/Carnumber/AddReferenceAccountCarnumber`,
       data
     );
   }

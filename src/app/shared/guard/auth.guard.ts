@@ -21,17 +21,14 @@ export class AuthGuard {
       this.router.navigate(['/login']);
       return of(false);
     }
-
     let requiredRoles = route.data['requiredRoles'];
 
     if (!requiredRoles) {
       return of(true);
     }
-
     if (!Array.isArray(requiredRoles)) {
       requiredRoles = [requiredRoles];
     }
-
     return this.accessControlService.getUserInfo().pipe(
       map((userInfo) => {
         if (userInfo && userInfo.functionals) {
@@ -64,7 +61,6 @@ export class AuthGuard {
   private getFirstAccessibleRoute(functionals: string[]): string | null {
     const functionalsRoutesMap: { [key: string]: string } = {
       allFunctionals: '',
-
     };
 
     for (const functional of functionals) {
@@ -73,10 +69,6 @@ export class AuthGuard {
         return route;
       }
     }
-
     return null;
   }
-
-
-  
 }

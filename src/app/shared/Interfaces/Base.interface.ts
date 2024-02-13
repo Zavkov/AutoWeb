@@ -10,7 +10,7 @@ export interface UserInfo {
   firstName: string;
   secondName: string;
   username: string;
-  storeId: number;
+  storeName: string;
   functionals: string[];
 }
 export interface AuthResponse {
@@ -133,17 +133,30 @@ export interface IBlankaOperation {
   isUsed: boolean;
 }
 export interface IBlankaOperationNakladnoy {
-  id?: number;
-  number: string;
+  referenceNumber: string;
   companyName: string;
   seriaName: string;
+  dateLiceFrom: Date;
+  dateLiceTo: Date;
   owner: string;
+  ownerAddress: string;
+  sPassport: string;
+  nPassport: string;
   issuedPassportName: string;
   dataIssued: Date;
-  recordDate: Date;
   vehicleModel: string;
+  vehiclePlace: string;
+  vehicleShasi: string;
+  vehicleKuzov: string;
+  vehicleRama: string;
+  colorName: string;
+  vehicleDataProFrom: Date;
+  vehiclePrice: number;
+  vehicleRegistrationCertificate: string;
+  licenceNumber: string;
+  whomIssued: string;
+  tranzitNumber: string;
   isApproved: boolean;
-  userName: string;
 }
 
 export interface Functionals {
@@ -155,21 +168,26 @@ export interface Functionals {
 export interface ReferenceAccount {
   id: number;
   referenceNumber: string;
-  companyId: number;
+  storId: number;
+  storeName: string;
   owner: string;
   ownerAddress: string;
   sPassport: string;
   nPassport: string;
   issuedPassportId: number;
+  issuedPassporName: string;
   dataIssued: Date;
   dataBirth: Date;
   vehicleId: number;
+  vehicleName: string;
+  vehicleType: string;
   vehicleModel: string;
   vehiclePlace: string;
   vehicleShasi: string;
   vehicleKuzov: string;
   vehicleRama: string;
   colorId: number;
+  colorName: string;
   vehicleDataProFrom: Date;
   contractual: boolean;
   vehiclePrice: number;
@@ -181,20 +199,24 @@ export interface ReferenceAccount {
   dateLiceFrom: Date;
   tranzitNumber: string;
   seriaId: number;
-  userId: number;
+  seriaName: string;
+  userName: string;
   comment: string;
+  isApproved: boolean;
 }
 export interface ReferenceAccountCarnumber {
   id: number;
   blankNumber: string;
-  companyId: number;
-  vehicleId: number;
+  storeId: number;
+  storeName: string;
   seriaId: number;
+  seriaName: string;
   placeRegistration: string;
   carNumber: string;
   address: string;
   selIssuedPassportId: number;
   buyIssuedPassportId: number;
+  issuedPassportName: string;
   saleFio: string;
   saleSPassport: string;
   saleNPassport: string;
@@ -206,4 +228,12 @@ export interface ReferenceAccountCarnumber {
   certificatePermissionCarNumber: string;
   price: number;
   pricePercent: number;
+  userid: number;
+  userName: string;
+}
+//============================================ Reports===========================
+export interface ReportByDayFetchCriteries {
+  storeId: number[];
+  fromDate: string;
+  toDate: string;
 }
