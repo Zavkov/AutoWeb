@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-10 d-flex align-items-center">
         <button mat-raised-button color="primary" (click)="OnAddClick()">
-          <mat-icon>add</mat-icon> 
+          <mat-icon>add</mat-icon>
           Добавить
         </button>
         <mat-form-field class="w-75 mt-2 mx-2">
@@ -22,10 +22,9 @@
   </div>
   <div class="mat-elevation-z8 w-100">
     <mat-table [dataSource]="dataSource" matSort>
-      <ng-container matColumnDef="id"> 
+      <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> № </th>
-        <td mat-cell *matCellDef="let element let i=index"
-          class="mat-paginator-cell">
+        <td mat-cell *matCellDef="let element let i=index" class="mat-paginator-cell">
           {{i+1}}.
         </td>
       </ng-container>
@@ -35,10 +34,10 @@
           {{row.invoiceNumber}}
         </td>
       </ng-container>
-      <ng-container matColumnDef="companyName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Фирма </th>
+      <ng-container matColumnDef="storeName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Магазин </th>
         <td mat-cell *matCellDef="let row">
-          {{row.companyName}}
+          {{row.storeName}}
         </td>
       </ng-container>
       <ng-container matColumnDef="seriaName">
@@ -63,7 +62,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Номер бланки до</th>
         <td mat-cell *matCellDef="let row">
           {{row.numberTo}}
-        </td> 
+        </td>
       </ng-container>
       <ng-container matColumnDef="userName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Пользователь
@@ -80,8 +79,7 @@
           <button mat-icon-button color="primary" (click)="onEdit(element)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="warn"
-            *ngIf="accessControlService.canAccess('userDelete')"
+          <button mat-icon-button color="warn" *ngIf="accessControlService.canAccess('userDelete')"
             (click)="openDeleteDialog(element.id)">
             <mat-icon>delete</mat-icon>
           </button>
@@ -98,7 +96,6 @@
         </tr>
       </tbody>
     </mat-table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page of items"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of items"></mat-paginator>
   </div>
 </div>

@@ -8,8 +8,8 @@
     <form [formGroup]="formGroup">
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Выбор Фирмы</mat-label>
-        <mat-select formControlName="companyId">
-          <mat-option *ngFor="let company of company" [value]="company.id">{{company.fullname}}</mat-option>
+        <mat-select formControlName="storeId">
+          <mat-option *ngFor="let store of store" [value]="store.id">{{store.fullname}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="w-100">

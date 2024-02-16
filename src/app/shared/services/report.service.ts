@@ -7,11 +7,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ReportService {
-  private url:string;
+  private url: string;
   constructor(private http: HttpClient, private config: ConfigService) {
     this.url = this.config.getApiUrl();
   }
   getByDays(data: any): Observable<any> {
-    return this.http.get<any[]>(`${this.url}api/Report/by-days`, { params: data });
+    return this.http.get<any[]>(`${this.url}api/Report/by-days`, {
+      params: data,
+    });
+  }
+  getsaleUnSaleBlank(data: any): Observable<any> {
+    return this.http.get<any[]>(`${this.url}api/Report/UnSaled-Blanke`, {
+      params: data,
+    });
   }
 }

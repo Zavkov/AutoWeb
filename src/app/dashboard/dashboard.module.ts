@@ -21,6 +21,7 @@ import { RoleComponent } from './role/role.component';
 import { ColorComponent } from './color/color.component';
 import { ReportByDayComponent } from './reports/report-by-day/report-by-day.component';
 import { DatePipe } from '@angular/common';
+import { SaleOrUnsaleBlankeComponent } from './reports/sale-or-unsale-blanke/sale-or-unsale-blanke.component';
 const routes: Routes = [
   {
     path: '',
@@ -127,11 +128,21 @@ const routes: Routes = [
           import('./nakladnoy/nakladnoy.module').then((m) => m.NakladnoyModule),
       },
       {
-        path:'by-day',
-        title:'Отчет по дням',
+        path: 'by-day',
+        title: 'Отчет по дням',
         loadChildren: () =>
-          import('./reports/report-by-day/report-by-day.module').then((m) => m.ReportByDayModule),
-      }
+          import('./reports/report-by-day/report-by-day.module').then(
+            (m) => m.ReportByDayModule
+          ),
+      },
+      {
+        path: 'Sale-Unsale',
+        title: 'Отчет по использованным и не использованным бланкам',
+        loadChildren: () =>
+          import(
+            './reports/sale-or-unsale-blanke/sale-or-unsale-blanke.module'
+          ).then((m) => m.SaleOrUnsaleBlankeModule),
+      },
     ],
   },
   // {
@@ -164,6 +175,7 @@ const routes: Routes = [
     RoleComponent,
     ColorComponent,
     ReportByDayComponent,
+    SaleOrUnsaleBlankeComponent,
   ],
   imports: [
     SharedModule,
@@ -172,7 +184,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatFormFieldModule,
     MatExpansionModule,
-    DatePipe
+    DatePipe,
   ],
 })
 export class DashboardModule {}

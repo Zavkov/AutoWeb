@@ -105,11 +105,11 @@ export interface Store {
 }
 export interface Blanka {
   id?: number;
-  companyName: string;
+  storeName: string;
   seriaName: string;
   userName: string;
   invoiceNumber: string;
-  companyId: number;
+  storeId: number;
   seriaId: number;
   isSelected: boolean;
   numberFrom: number;
@@ -134,7 +134,7 @@ export interface IBlankaOperation {
 }
 export interface IBlankaOperationNakladnoy {
   referenceNumber: string;
-  companyName: string;
+  storeName: string;
   seriaName: string;
   dateLiceFrom: Date;
   dateLiceTo: Date;
@@ -236,4 +236,21 @@ export interface ReportByDayFetchCriteries {
   storeId: number[];
   fromDate: string;
   toDate: string;
+}
+export interface SaleOrUnsaleBlankeReport {
+  id: number;
+  number: string;
+  storeName: string;
+  seriaName: string;
+  numberFrom: string;
+  numberTo: string;
+  dataUsed: Date;
+  cityName: string;
+  isUsed: boolean;
+}
+export interface SaleOrUnsaleBlankeFetchCriteries {
+  storeId: number[];
+  fromDate: string;
+  toDate: string;
+  isUsed: boolean;
 }

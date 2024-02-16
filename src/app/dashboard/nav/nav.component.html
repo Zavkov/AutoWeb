@@ -29,7 +29,9 @@
                 </mat-menu>
                 <button mat-button [matMenuTriggerFor]="reports">Отчеты</button>
                 <mat-menu #reports="matMenu" class="profi">
-                    <button mat-menu-item  routerLink="by-day">По дням</button>
+                    <button mat-menu-item routerLink="by-day">По дням</button>
+                    <button mat-menu-item routerLink="Sale-Unsale">Отчет по использованным и не использованным
+                        бланкам</button>
                     <button mat-menu-item>Выгрузка</button>
                 </mat-menu>
                 <button mat-button routerLink="/search-bco">Поиск БСО</button>

@@ -4,10 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   Blanka,
-  Company,
   IBlankaOperation,
   IBlankaOperationNakladnoy,
   Seria,
+  Store,
   User,
 } from 'src/app/shared/Interfaces/Base.interface';
 import { BaseService } from 'src/app/shared/services/base.service';
@@ -26,7 +26,7 @@ export class NakladnoyComponent implements OnInit {
   blanka: Blanka[];
   blankaOperations: IBlankaOperation[];
   seria: Seria[];
-  company: Company[];
+  store: Store[];
   user: User[];
   title = '';
   selectedBlanka: Blanka;
@@ -57,8 +57,8 @@ export class NakladnoyComponent implements OnInit {
     this.service.getSeria().subscribe((res) => {
       this.seria = res;
     });
-    this.service.getCompany().subscribe((res) => {
-      this.company = res;
+    this.service.getStores().subscribe((res) => {
+      this.store = res;
     });
     this.service.getUsers(1, 1000).subscribe({
       next: (v) => (this.user = v.result),

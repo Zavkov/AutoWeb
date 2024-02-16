@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Company, Seria } from 'src/app/shared/Interfaces/Base.interface';
+import { Seria, Store } from 'src/app/shared/Interfaces/Base.interface';
 import { BaseService } from 'src/app/shared/services/base.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { BaseService } from 'src/app/shared/services/base.service';
   styleUrls: ['./add-dialog.component.css'],
 })
 export class AddDialogComponent implements OnInit {
-  company: Company[];
+  store: Store[];
   seria: Seria[];
   formGroup: FormGroup;
 
@@ -27,14 +27,14 @@ export class AddDialogComponent implements OnInit {
       numberFrom: [null, Validators.required],
       numberTo: [null, Validators.required],
       dataSale: [null],
-      companyId: [null],
+      storeId: [null],
       seriaId: [null],
     });
     if (this.dialogData.id) {
       this.formGroup.patchValue(this.dialogData);
     }
-    this.service.getCompany().subscribe((res) => {
-      this.company = res;
+    this.service.getStores().subscribe((res) => {
+      this.store = res;
     });
     this.service.getSeria().subscribe((res) => {
       this.seria = res;

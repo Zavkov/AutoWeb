@@ -1,0 +1,114 @@
+<div class="container p-3">
+    <h2 class="text-center">{{title}}</h2>
+    <div class="d-flex justify-content-between">
+        <div>
+            <h3>За период с: <span>{{fetchCriterias.fromDate}}</span> по: <span>{{fetchCriterias.toDate}}</span></h3>
+            <h3>Название магазина: <span> {{storeName}}</span></h3>
+        </div>
+        <div>
+            <button class="btn btn-primary p-3" (click)="onExport()">
+                <i class="material-icons align-middle">note_add</i>Экспорт
+            </button>
+        </div>
+    </div>
+</div>
+<div class=" container ">
+    <form [formGroup]="form" class="d-flex ">
+        <mat-form-field appearance="outline" class="p-3 ">
+            <mat-label>От</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="fromDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="p-3 ">
+            <mat-label>До</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="toDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="p-3 w-25">
+            <mat-label>Выбор магазина</mat-label>
+            <mat-select formControlName="storeId" multiple>
+                <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">Все</mat-option>
+                <mat-option *ngFor="let store of store " [value]="store.id"
+                    (click)="togglePerOne()">{{store.fullname}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-checkbox formControlName="isUsed" style="margin-top:20px ;">Использование</mat-checkbox>
+        <div style="margin-top:10px; margin-left: 20px;">
+            <button class="btn btn-primary p-3" (click)="onSearch()" [disabled]="!form.valid">
+                <i class="material-icons">search </i>
+            </button>
+        </div>
+    </form>
+</div>
+<div class="mat-elevation-z8 p-3" #TABLE>
+    <mat-form-field class="w-50">
+        <mat-label> Фильт...</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Название ..." #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" matSort matSortStart="desc" matSortDirection="asc" matSortDisableClearw
+        class="stripped" #table>
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> № </th>
+            <td mat-cell *matCellDef="let element let i=index" class="mat-paginator-cell">
+                {{i+1}}.
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="storeName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Название магазина </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.storeName}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="seriaName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Серия </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.seriaName}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="number">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Номер накладной </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.number}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="numberFrom">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>От номера </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.numberFrom}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="numberTo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>До номера </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.numberTo}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="cityName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Регион </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.cityName}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="dataUsed">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата </th>
+            <td mat-cell *matCellDef="let row">
+                {{row.dataUsed}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="isUsed">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Использовано</th>
+            <td mat-cell *matCellDef="let row">
+                {{row.isUsed? 'Да' :'Нет' }}
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+<div class="container-fluid p-5">
+    <h3>Количества: <span class="red">{{totalCount}}</span></h3>
+</div>

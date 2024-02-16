@@ -22,7 +22,7 @@ export class BlankaComponent {
   displayedColumns = [
     'id',
     'invoiceNumber',
-    'companyName',
+    'storeName',
     'seriaName',
     'recordDate',
     'numberFrom',
@@ -31,9 +31,9 @@ export class BlankaComponent {
     'action'
   ];
   
-  company:Company[];
-  companyName:{[id:number]:string} = {}; 
-  companyId:number | null = null;
+  store:Store[];
+  storeName:{[id:number]:string} = {}; 
+  storeId:number | null = null;
 
   seria:Seria[];
   seriaName:{[id:number]:string} = {}; 
@@ -59,17 +59,17 @@ constructor(
 
 ngOnInit() {
   this.getBlanka();
-  this.getCompany();
+  this.getStore();
   this.getUser();
   this.getSeria();
 }
-getCompany(){
-  this.Service.getCompany().subscribe({
+getStore(){
+  this.Service.getStores().subscribe({
     next:(res)=>{
-      this.company = res;
-      for(let comp of this.company){
+      this.store = res;
+      for(let comp of this.store){
         if(comp.id !=undefined){
-          this.companyName[comp.id] = comp.fullname
+          this.storeName[comp.id] = comp.fullname
         }
       }
     }
